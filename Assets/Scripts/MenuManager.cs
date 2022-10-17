@@ -7,6 +7,8 @@ public class MenuManager : MonoBehaviour
 
     public static MenuManager sharedInstance;
     public Canvas menuCanvas;
+    public Canvas gameCanvas;
+    public Canvas gameOverCanvas;
 
     private void Awake(){
         if(sharedInstance == null){
@@ -14,13 +16,33 @@ public class MenuManager : MonoBehaviour
         }
     } 
 
+    //CANVAS
+    //Menu
     public void ShowMainMenu(){
-        menuCanvas.enabled = true;
+        gameOverCanvas.enabled = true;
+        //menuCanvas.enabled = true;
+        //gameCanvas.enabled = false;
+        //gameOverCanvas.enabled = false;
+    }
+    public void HideCanvas(){
+        gameCanvas.enabled = false;
+        gameOverCanvas.enabled = false;
     }
 
-    public void HideMainMenu(){
+    //Game
+    public void ShowGameCanvas(){
+        gameCanvas.enabled = true;
         menuCanvas.enabled = false;
+        gameOverCanvas.enabled = false;
     }
+
+    //GameOver
+    public void ShowGameOver(){
+        gameOverCanvas.enabled = true;
+        menuCanvas.enabled = false;
+        gameCanvas.enabled = false;
+    }
+
 
     public void ExitGame(){
         #if UNITY_EDITOR

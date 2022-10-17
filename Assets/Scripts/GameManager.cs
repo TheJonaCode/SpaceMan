@@ -48,13 +48,15 @@ public class GameManager : MonoBehaviour
     private void SetGameState(GameState newGameState){
         if(newGameState == GameState.menu){
             MenuManager.sharedInstance.ShowMainMenu();
+            MenuManager.sharedInstance.HideCanvas();
         } else if(newGameState == GameState.inGame){
             LevelManager.sharedInstance.RemoveAllLevelBlocks();
             LevelManager.sharedInstance.GenerateInitialBlocks();
             controller.StartGame();
-            MenuManager.sharedInstance.HideMainMenu();
+
+            MenuManager.sharedInstance.ShowGameCanvas();
         } else if(newGameState == GameState.gameOver){
-            MenuManager.sharedInstance.ShowMainMenu();
+            MenuManager.sharedInstance.ShowGameOver();
         }
 
         this.currentGameState = newGameState;
