@@ -19,10 +19,9 @@ public class MenuManager : MonoBehaviour
     //CANVAS
     //Menu
     public void ShowMainMenu(){
-        gameOverCanvas.enabled = true;
-        //menuCanvas.enabled = true;
-        //gameCanvas.enabled = false;
-        //gameOverCanvas.enabled = false;
+        menuCanvas.enabled = true;
+        gameCanvas.enabled = false;
+        gameOverCanvas.enabled = false;
     }
     public void HideCanvas(){
         gameCanvas.enabled = false;
