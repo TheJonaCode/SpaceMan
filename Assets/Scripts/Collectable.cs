@@ -25,13 +25,13 @@ public class Collectable : MonoBehaviour
     }
 
     void Show(){
-        SpriteRenderer.enabled = true;
+        sprite.enabled = true;
         itemCollider.enabled = true;
         hasBeenCollected = false;
     }
 
     void Hide(){
-        SpriteRenderer.enabled = false;
+        sprite.enabled = false;
         itemCollider.enabled = false;
     }
 
@@ -41,13 +41,15 @@ public class Collectable : MonoBehaviour
 
         switch(this.type){
             case CollectableType.money:
-                //TO DO: Lógica de la moneda
+                GameManager.sharedInstance.CollectedObject(this);
                 break;
             case CollectableType.healthPotion:
                 //TO DO: Lógica de poción
+
                 break;
             case CollectableType.manaPotion:
-                //TO DO: Lógica de mana
+                //TO DO: Lógica de maná
+
                 break;
         }
     }
