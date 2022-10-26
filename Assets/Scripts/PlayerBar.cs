@@ -12,31 +12,29 @@ public class PlayerBar : MonoBehaviour
 {
     private Slider slider;
     public BarType type;
-
+    
     void Start(){
         slider = GetComponent<Slider>();
         switch(type){
             case BarType.healthBar:
                 slider.maxValue = PlayerControler.MAX_HEALTH;
-            break;
+                break;
 
             case BarType.manaBar:
                 slider.maxValue = PlayerControler.MAX_MANA;
-            break;
+                break;
         }
     }
 
     void Update(){
         switch(type){
             case BarType.healthBar:
-                slider.value = GameObject.Find("Player").
-                    GetComponent<PlayerControler>().GetHealth();
-            break;
+                slider.value = GameObject.Find("Player").GetComponent<PlayerControler>().GetHealth();
+                break;
 
             case BarType.manaBar:
-                slider.value = GameObject.Find("Player").
-                    GetComponent<PlayerControler>().GetMana();
-            break;
+                slider.value = GameObject.Find("Player").GetComponent<PlayerControler>().GetMana();
+                break;
         }
     }
 }
