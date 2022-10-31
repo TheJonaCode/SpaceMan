@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         if(collision.tag == "Player"){
-            //collision.GameObject.GetComponent<PlayerControler>().CollectHealth(-enemyDamage);
+            collision.gameObject.GetComponent<PlayerControler>().CollectHealth(-enemyDamage);
             return;
         }
         //Si enemy impacta con otro elemento, es probable que sea con otro enemigo o elemento de escenario

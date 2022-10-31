@@ -16,7 +16,9 @@ public class PlayerControler : MonoBehaviour
     const string STATE_ALIVE = "isAlive";
     const string STATE_ON_THE_GROUND = "isOnTheGround"; 
 
+    [SerializeField] //<-- Para observar una varibale desde el editor
     private int healthPoints, manaPoints;
+
     public const int INITIAL_HEALTH = 100, INITIAL_MANA = 15,
         MAX_HEALTH = 200, MAX_MANA = 30,
         MIN_HEALTH = 10, MIN_MANA = 0;
@@ -24,6 +26,8 @@ public class PlayerControler : MonoBehaviour
     //Mana
     public const int SUPERJUM_COST = 5;
     public const float SUPERJUM_FORCE = 1.5f;
+
+    public float jumpRaycastDistance = 1.6f;
 
     //Máscara del suelo
     public LayerMask groundMask;
@@ -66,7 +70,7 @@ public class PlayerControler : MonoBehaviour
 
         animator.SetBool(STATE_ON_THE_GROUND, IsTouchingTheGround());
 
-        Debug.DrawRay(this.transform.position, Vector2.down * 1.5f, Color.red);
+        Debug.DrawRay(this.transform.position, Vector2.down * jumpRaycastDistance, Color.red);
     }
 
     void FixedUpdate(){
@@ -93,7 +97,7 @@ public class PlayerControler : MonoBehaviour
     }
 
     bool IsTouchingTheGround(){
-        if(Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask)){
+        if(Physics2D.Raycast(this.transform.position, Vector2.down, jumpRaycastDistance, groundMask)){
             return true;
         }else{
             return false;
