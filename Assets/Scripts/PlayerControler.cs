@@ -105,6 +105,7 @@ public class PlayerControler : MonoBehaviour
     }
 
     public void Die(){
+        //Puntuación máxima
         float travelledDistance = GetTravelledDistance();
         float previousMaxDistance = PlayerPrefs.GetFloat("maxscore", 0f);
         if(travelledDistance > previousMaxDistance){
@@ -119,6 +120,9 @@ public class PlayerControler : MonoBehaviour
         this.healthPoints += points;
         if(this.healthPoints >= MAX_HEALTH){
             this.healthPoints = MAX_HEALTH;
+        }
+        if(this.healthPoints <= 0){
+            Die();
         }
     }
 
