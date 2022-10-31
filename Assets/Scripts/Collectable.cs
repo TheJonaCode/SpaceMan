@@ -48,6 +48,8 @@ public class Collectable : MonoBehaviour
         switch(this.type){
             case CollectableType.money:
                 GameManager.sharedInstance.CollectedObject(this);
+                //Reproducir sonido
+                GetComponent<AudioSource>().Play();
                 break;
 
             case CollectableType.healthPotion:

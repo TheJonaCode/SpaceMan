@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
+        GetComponent<AudioSource>().Play();
         if(collision.tag == "Coin"){
             return;
         }
