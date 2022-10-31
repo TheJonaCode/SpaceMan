@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    public int enemyDamage = 10;
     public float runningSpeed = 1.5f;
 
     Rigidbody2D rigidBody;
@@ -40,6 +41,18 @@ public class Enemy : MonoBehaviour
             rigidBody.velocity = new Vector2(currentRunningSpeed, rigidBody.velocity.y);
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.tag == "Coin"){
+            return;
+        }
+        if(collision.tag == "Player"){
+            //collision.GameObject.GetComponent<PlayerControler>().CollectHealth(-enemyDamage);
+            return;
+        }
+        //Si enemy impacta con otro elemento, es probable que sea con otro enemigo o elemento de escenario
+        facingRight = !facingRight;
     }
 
 }
